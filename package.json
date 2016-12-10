@@ -1,0 +1,44 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "advent": "./bin/advent.js"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "keywords": [
+    "adventofcode",
+    "advent",
+    "puzzle"
+  ],
+  "author": "ksmithut",
+  "license": "MIT",
+  "eslintConfig": {
+    "extends": [
+      "ksmithut",
+      "ksmithut/node",
+      "ksmithut/es6-node"
+    ]
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
+    "get-stdin": "^5.0.1",
+    "glob": "^7.1.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "to-markdown": "^3.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-ksmithut": "^2.3.0"
+  }
+}
