@@ -1,11 +1,9 @@
 {
   "name": "advent-of-code",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.0.0",
+  "description": "A cli to help initialize/run JavaScript advent-of-code challenges.",
+  "main": "bin/advent.js",
+  "scripts": {},
   "bin": {
     "advent": "./bin/advent.js"
   },
@@ -18,6 +16,10 @@
     "advent",
     "puzzle"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksmithut/advent-of-code.git"
+  },
   "author": "ksmithut",
   "license": "MIT",
   "eslintConfig": {
