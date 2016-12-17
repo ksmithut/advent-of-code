@@ -26,13 +26,7 @@ $ advent init <day> [--year <year>] [--session <session>]
 
 - `<day>` - The day to initialize. Will create a file in the current working
   directory called `day{day}.js`. You can run `advent init <day>` again and it
-  won't delete the file, but if you're pulling descriptions from
-  adventofcode.com, then it will fill in the missing descriptions.
-- `--session <session>` - The session key to use when making requests to
-  adventofcode.com. To get it, open up the developer console, open up the
-  network tab, then login (or refresh the page if you're already logged in).
-  Then in the request for the page, look for the "Cookie" header. Copy the value
-  of that header and use that for this session argument.
+  won't do anything.
 - `--year <year>` - If making a request to adventofcode.com, this is the year
   to use when pulling down the description. The default year is the previous
   year, unless it is the month of December.
@@ -52,14 +46,15 @@ $ advent run <day> <part> <input> [--year <year>] [--session <session>]
 - `<input>` - The input to give the function. If `-` is passed, stdin will be
   used as the input. If `+` is passed, and you have a session set, then it will
   pull the input from adventofcode.com.
-- `--session <session>,--year <year>` - Works the same as `advent init`
+- `--session <session>,--year <year>` - Works the same as `advent init`. A
+  session is required if you don't already have a cached version of the input
+  when using `+` as your input source.
 
 # Notes
 
-- No requests will be made to adventofcode.com unless you have a session set. I
-  would also like to leverage a local cache so that the minimum amount of bytes
-  are requested from adventofcode.com. I would love for ideas on best practices
-  for caching.
+- No requests will be made to adventofcode.com unless you have a session set. A
+  local cache is kept so that you only should have to make one request for input
+  per day.
 
 - The config for `year` and `session` can also be provided in the package.json
   as config under the `adventConfig` key in your package.json. e.g.:
@@ -77,6 +72,12 @@ $ advent run <day> <part> <input> [--year <year>] [--session <session>]
   For your session, you can also set the `ADVENT_SESSION` environment variable
   instead.
 
+- This module leverages the [debug](https://www.npmjs.com/package/debug) module.
+  Setting `DEBUG=advent` will print out debug information, such as when this
+  module is pulling from local cache, which days it's trying to run/initialize,
+  and so forth. When reporting bugs, please have the output from this handy so
+  that I can more quickly determine the issue.
+
 - One thing I liked to do with my local stuff was to store my answers locally
   along with example inputs (from the descriptions). The goal for this project
   was to make it easy for someone to upload their solutions to github, and
@@ -90,5 +91,8 @@ I am not affiliated with [adventofcode.com](http://adventofcode.com) or any of
 their sponsors, employees, pets, or anything relating to them. I am an active
 participant, and I wanted to make a tool to make it easier to setup and run
 advent of code things. Please don't abuse adventofcode.com. This tool could be
-used to make a lot of automated requests to their site (which is why I want to
-leverage a caching solution if more people are interested in using this tool).
+used to make a lot of automated requests to their site, which is why this tool
+leverages caching. If you find that you're making too many requests to
+adventofcode.com because of this module, please let me know so I can resolve any
+issues. If this module is used to abuse adventofcode.com, I will unpublish it
+from npm and remove this code from github.
