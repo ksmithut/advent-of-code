@@ -23,18 +23,17 @@
   "author": "ksmithut",
   "license": "MIT",
   "eslintConfig": {
+    "root": true,
     "extends": [
-      "ksmithut",
-      "ksmithut/node",
-      "ksmithut/es6-node"
+      "standard"
     ]
   },
   "dependencies": {
     "bluebird": "^3.4.6",
-    "cheerio": "^0.22.0",
+    "cheerio": "^1.0.0-rc.1",
     "commander": "^2.9.0",
     "debug": "^2.4.4",
-    "find-cache-dir": "^0.1.1",
+    "find-cache-dir": "^1.0.0",
     "get-stdin": "^5.0.1",
     "glob": "^7.1.1",
     "request": "^2.79.0",
@@ -42,7 +41,6 @@
     "to-markdown": "^3.0.3"
   },
   "devDependencies": {
-    "eslint": "^3.11.1",
-    "eslint-config-ksmithut": "^2.3.0"
+    "standard": "^10.0.2"
   }
 }

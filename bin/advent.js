@@ -13,9 +13,7 @@ const pkg = require('../package.json')
 
 program.version(pkg.version)
 
-program
-  .command('help', messages.help.description)
-  .action(() => program.help())
+program.command('help', messages.help.description).action(() => program.help())
 
 program
   .command('run <day> <part> <input>')
@@ -32,9 +30,10 @@ program
       part,
       session: command.session,
       part1: part === 1,
-      part2: part === 2,
+      part2: part === 2
     })
-    debug('running part %s day %s year %s...',
+    debug(
+      'running part %s day %s year %s...',
       config.part,
       config.day,
       config.year
@@ -52,7 +51,7 @@ program
     const config = getConfig({
       year: command.year,
       day: parseNum(day),
-      session: command.session,
+      session: command.session
     })
     debug('initializing day %s year %s', config.day, config.year)
     initDay(config)
