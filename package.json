@@ -29,18 +29,16 @@
     ]
   },
   "dependencies": {
-    "bluebird": "^3.4.6",
-    "cheerio": "^1.0.0-rc.1",
-    "commander": "^2.9.0",
-    "debug": "^2.4.4",
+    "bluebird": "^3.5.0",
+    "commander": "^2.11.0",
+    "debug": "^3.0.1",
     "find-cache-dir": "^1.0.0",
     "get-stdin": "^5.0.1",
-    "glob": "^7.1.1",
-    "request": "^2.79.0",
-    "request-promise": "^4.1.1",
-    "to-markdown": "^3.0.3"
+    "glob": "^7.1.2",
+    "request": "^2.82.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
-    "standard": "^10.0.2"
+    "standard": "^10.0.3"
   }
 }

@@ -5,10 +5,10 @@
 process.title = 'advent'
 
 const program = require('commander')
-const debug = require('debug')('advent')
+const parseNum = require('../lib/utils/parse-num')
+const debug = require('../lib/utils/debug')
 const messages = require('../lib/messages')
 const getConfig = require('../lib/get-config')
-const parseNum = require('../lib/utils/parse-num')
 const pkg = require('../package.json')
 
 program.version(pkg.version)
