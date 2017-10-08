@@ -3,7 +3,10 @@
   "version": "2.0.1",
   "description": "A cli to help initialize/run JavaScript advent-of-code challenges.",
   "main": "bin/advent.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "standard",
+    "test": "jest"
+  },
   "bin": {
     "advent": "./bin/advent.js"
   },
@@ -28,17 +31,31 @@
       "standard"
     ]
   },
+  "jest": {
+    "collectCoverage": true,
+    "coverageThreshold": {
+      "global": {
+        "statements": 100,
+        "branch": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  },
   "dependencies": {
-    "bluebird": "^3.5.0",
+    "bluebird": "^3.5.1",
     "commander": "^2.11.0",
-    "debug": "^3.0.1",
-    "find-cache-dir": "^1.0.0",
+    "configstore": "^3.1.1",
+    "debug": "^3.1.0",
     "get-stdin": "^5.0.1",
-    "glob": "^7.1.2",
-    "request": "^2.82.0",
+    "mkdirp": "^0.5.1",
+    "request": "^2.83.0",
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
+    "@types/jest": "^21.1.2",
+    "jest": "^21.2.1",
+    "nock": "^9.0.22",
     "standard": "^10.0.3"
   }
 }

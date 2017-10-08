@@ -3,14 +3,14 @@
 // Part 1
 // ======
 
-function part1 (input) {
+const part1 = input => {
   return input
 }
 
 // Part 2
 // ======
 
-function part2 (input) {
+const part2 = input => {
   return input
 }
 
