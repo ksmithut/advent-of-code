@@ -3,7 +3,7 @@
 
 const querystring = require('querystring')
 const nock = require('nock')
-const adventApi = require('../advent-api')
+const adventApi = require.requireActual('../advent-api')
 
 describe('advent-api', () => {
   beforeAll(() => nock.cleanAll())

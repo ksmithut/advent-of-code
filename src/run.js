@@ -55,21 +55,19 @@ const run = (rawInput, config) => {
         time = timing()
         return dayModule.part1(input)
       }
+      // istanbul ignore else - Input gets validated before this
       if (config.part === 2) {
         debug(`Running part 2`)
         time = timing()
         return dayModule.part2(input)
       }
+      // istanbul ignore next - Input gets validated before this
       throw new RangeError('Not a valid part. Must be 1 or 2.')
     })
     .then(output => {
       const end = time()
       debug(`Got output in ${end}ms`)
-      console.log(output)
-    })
-    .catch(err => {
-      debug('error running advent run')
-      console.error(err.stack)
+      return output
     })
 }
 

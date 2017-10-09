@@ -33,6 +33,10 @@
   },
   "jest": {
     "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__fixtures__/"
+    ],
     "coverageThreshold": {
       "global": {
         "statements": 100,
@@ -56,6 +60,7 @@
     "@types/jest": "^21.1.2",
     "jest": "^21.2.1",
     "nock": "^9.0.22",
+    "rimraf": "^2.6.2",
     "standard": "^10.0.3"
   }
 }

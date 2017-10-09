@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`advent cli init command inits file 1`] = `
+Array [
+  Array [
+    ".gitkeep",
+    "day05.js",
+  ],
+  "'use strict'
+
+// Part 1
+// ======
+
+const part1 = input => {
+  return input
+}
+
+// Part 2
+// ======
+
+const part2 = input => {
+  return input
+}
+
+module.exports = { part1, part2 }
+",
+]
+`;
+
+exports[`advent cli init command it uses --name-template argument 1`] = `
+"'use strict'
+
+// Part 1
+// ======
+
+const part1 = input => {
+  return input
+}
+
+// Part 2
+// ======
+
+const part2 = input => {
+  return input
+}
+
+module.exports = { part1, part2 }
+"
+`;
+
+exports[`advent cli init command it uses package.json configuration 1`] = `
+"'use strict'
+
+exports.part1 = input => input
+exports.part2 = input => input
+"
+`;
+
+exports[`advent cli init command keeps existing file in place 1`] = `
+Array [
+  Array [
+    ".gitkeep",
+    "day07.js",
+  ],
+  "'use strict'; console.log('hello')",
+]
+`;
