@@ -28,13 +28,13 @@ arguments, they will override your `package.json` configuration.
 }
 ```
 
-| `package.json` key          | CLI argument                     | `advent run` | `advent init` | Default                                                   | Description |
-| --------------------------- | -------------------------------- | ------------ | ------------- | --------------------------------------------------------- | ----------- |
-| `adventConfig.year`         | `-y, --year [year]`              | ✔            | ✘             | currentMonth === December ? currentYear : currentYear - 1 | When pulling input from adventofcode.com, this year will be used. |
-| -                           | `-s, --session [cookie]`         | ✔            | ✘             | `process.env.ADVENT_SESSION`                              | The session cookie to use when making requests to adventofcode.com. You can get this by logging into adventofcode.com and inspecting the request in your devtools and see what your cookie value is. Should start with `session=`. |
-| `adventConfig.nameTemplate` | `-n, --name-template [template]` | ✔            | ✔             | `'day{{num}}.js'`                                         | The filename template to use when running and creating new day files. Wherever `{{num}}` is in the string, it will be replaced with a two digit (leading `0`s) representation of the number will be input. So if the day is `1`, using the default template, the filename will be `day01.js`. |
-| `adventConfig.templateFile` | `-t, --template-file [filepath]` | ✘            | ✔             | `'node_modules/advent-of-code/src/templates/day.js'`      | The template file to use when initializing a new day file. It is recommended that you have your own that fits your style. The only requirement is that you export 2 functions: `exports.part1` and `exports.part2`, or just `module.exports = { part1, part2 }`. |
-| -                           | `-f, --force`                    | ✘            | ✔             | `false`                                                   | A flag used if you want to override an existing file with the template when calling `advent init` |
+| `package.json` key          | CLI argument                     | Default                                                   | Description |
+| --------------------------- | -------------------------------- | --------------------------------------------------------- | ----------- |
+| `adventConfig.year`         | `-y, --year [year]`              | currentMonth === December ? currentYear : currentYear - 1 | When pulling input from adventofcode.com, this year will be used. |
+| -                           | `-s, --session [cookie]`         | `process.env.ADVENT_SESSION`                              | The session cookie to use when making requests to adventofcode.com. You can get this by logging into adventofcode.com and inspecting the request in your devtools and see what your cookie value is. Should start with `session=`. |
+| `adventConfig.nameTemplate` | `-n, --name-template [template]` | `'day{{num}}.js'`                                         | The filename template to use when running and creating new day files. Wherever `{{num}}` is in the string, it will be replaced with a two digit (leading `0`s) representation of the number will be input. So if the day is `1`, using the default template, the filename will be `day01.js`. |
+| `adventConfig.templateFile` | `-t, --template-file [filepath]` | `'node_modules/advent-of-code/src/templates/day.js'`      | The template file to use when initializing a new day file. It is recommended that you have your own that fits your style. The only requirement is that you export 2 functions: `exports.part1` and `exports.part2`, or just `module.exports = { part1, part2 }`. |
+| -                           | `-f, --force`                    | `false`                                                   | A flag used if you want to override an existing file with the template when calling `advent init` |
 
 
 # Usage
