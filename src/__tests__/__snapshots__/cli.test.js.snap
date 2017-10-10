@@ -65,3 +65,30 @@ Array [
   "'use strict'; console.log('hello')",
 ]
 `;
+
+exports[`advent cli init command overrides existing file if force command is sent 1`] = `
+Array [
+  Array [
+    ".gitkeep",
+    "day07.js",
+  ],
+  "'use strict'
+
+// Part 1
+// ======
+
+const part1 = input => {
+  return input
+}
+
+// Part 2
+// ======
+
+const part2 = input => {
+  return input
+}
+
+module.exports = { part1, part2 }
+",
+]
+`;

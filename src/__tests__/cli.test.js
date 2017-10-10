@@ -102,6 +102,23 @@ describe('advent cli', () => {
         })
     })
 
+    test('overrides existing file if force command is sent', () => {
+      const myfile = `'use strict'; console.log('hello')`
+      process.chdir(fixtures('blank'))
+      return cli(createArgs('init', '7'))
+        .then(() => fs.writeFileAsync(fixtures('blank', 'day07.js'), myfile))
+        .then(() => cli(createArgs('init', '7', '--force')))
+        .then(() =>
+          Promise.all([
+            fs.readdirAsync(fixtures('blank')),
+            fs.readFileAsync(fixtures('blank', 'day07.js'), 'utf8')
+          ])
+        )
+        .then(results => {
+          expect(results).toMatchSnapshot()
+        })
+    })
+
     test('it uses --name-template argument', () => {
       process.chdir(fixtures('blank'))
       return cli(

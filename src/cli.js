@@ -44,12 +44,11 @@ const main = (
     ? path.resolve(userPkg.templateFile)
     : DEFAULT_TEMPLATE_FILE
 
-  const getConfig = args => {
+  const getConfig = (day, args) => {
     const config = {
       year: args.year,
       session: args.session || process.env.ADVENT_SESSION,
-      day: args.day,
-      part: args.part,
+      day: parseDay(day),
       nameTemplate: args.nameTemplate,
       templateFile: args.templateFile
     }
@@ -108,9 +107,8 @@ const main = (
     )
     .action((day, part, input, command) => {
       const run = require('./run')
-      command.day = parseDay(day)
-      command.part = parsePart(part)
-      const config = getConfig(command)
+      const config = getConfig(day, command)
+      config.part = parsePart(part)
       debug('Running "run" with following config: %O', config)
       action = run(input, config)
     })
@@ -131,11 +129,11 @@ const main = (
       'The path to a template file',
       defaultTemplateFile
     )
+    .option('-f, --force', 'Will override an existing file', false)
     .action((day, command) => {
       const init = require('./init')
-      command.day = parseDay(day)
-      command.part = parsePart('1')
-      const config = getConfig(command)
+      const config = getConfig(day, command)
+      config.force = command.force
       debug('Running "init" with following config: %O', config)
       action = init(config)
     })
