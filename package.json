@@ -10,10 +10,6 @@
   "bin": {
     "advent": "./bin/advent.js"
   },
-  "files": [
-    "bin",
-    "lib"
-  ],
   "keywords": [
     "adventofcode",
     "advent",
