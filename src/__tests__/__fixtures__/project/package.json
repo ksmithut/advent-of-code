@@ -1,0 +1,7 @@
+{
+  "adventConfig": {
+    "year": "2016",
+    "nameTemplate": "src/day{{num}}.js",
+    "templateFile": "template.js"
+  }
+}

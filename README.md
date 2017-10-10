@@ -5,72 +5,82 @@ A cli to help initialize/run JavaScript advent-of-code challenges.
 # Installation
 
 ```sh
-$ npm install -g advent-of-code
+yarn add advent-of-code
+# or install globally
+yarn global add advent-of-code
 ```
+
+# Configuration
+
+You can configure the `advent` cli using the command line arguments (documented
+below) or some of the arguments can be configured via a `package.json` file.
+
+Below are the available configuration options. If you pass in command-line
+arguments, they will override your `package.json` configuration.
+
+```js
+{
+  "adventConfig": {
+    "year": "2016",
+    "nameTemplate": "day{{num}}.js",
+    "templateFile": "node_modules/advent-of-code/src/templates/day.js"
+  }
+}
+```
+
+| `package.json` key          | CLI argument                     | Default                                                   | Description |
+| --------------------------- | -------------------------------- | --------------------------------------------------------- | ----------- |
+| `adventConfig.year`         | `-y, --year [year]`              | currentMonth === December ? currentYear : currentYear - 1 | When pulling input from adventofcode.com, this year will be used. |
+| -                           | `-s, --session [cookie]`         | `process.env.ADVENT_SESSION`                              | The session cookie to use when making requests to adventofcode.com. You can get this by logging into adventofcode.com and inspecting the request in your devtools and see what your cookie value is. Should start with `session=`. |
+| `adventConfig.nameTemplate` | `-n, --name-template [template]` | `'day{{num}}.js'`                                         | The filename template to use when running and creating new day files. Wherever `{{num}}` is in the string, it will be replaced with a two digit (leading `0`s) representation of the number will be input. So if the day is `1`, using the default template, the filename will be `day01.js`. |
+| `adventConfig.templateFile` | `-t, --template-file [filepath]` | `'node_modules/advent-of-code/src/templates/day.js'`      | The template file to use when initializing a new day file. It is recommended that you have your own that fits your style. The only requirement is that you export 2 functions: `exports.part1` and `exports.part2`, or just `module.exports = { part1, part2 }`. |
+| -                           | `-f, --force`                    | `false`                                                   | A flag used if you want to override an existing file with the template when calling `advent init` |
+
 
 # Usage
 
 ## Display help
 
 ```sh
-$ advent help
+advent help
 ```
 
 ## Initialize a day
 
 ```sh
-$ advent init <day> [--year <year>] [--session <session>]
+advent init <day>
 ```
 
 ### Options
 
-- `<day>` - The day to initialize. Will create a file in the current working
-  directory called `day{day}.js`. You can run `advent init <day>` again and it
-  won't do anything.
-- `--year <year>` - If making a request to adventofcode.com, this is the year
-  to use when pulling down the description. The default year is the previous
-  year, unless it is the month of December.
+- `<day>` - The day to initialize. Will create a file using your `nameTemplate`
+  configuration. You can run `advent init <day>` again and it won't do anything
+  unless you pass the `--force` flag.
+- `--name-template [template]` - See configuration above
+- `--template-file [filepath]` - See configuration above
+- `--force` - See configuration above
 
 ## Run a day's code
 
 ```sh
-$ advent run <day> <part> <input> [--year <year>] [--session <session>]
+$ advent run <day> <part> <input>
 ```
 
 ### Options
 
-- `<day>` - The day to initialize. Will look for a file called `day{day}.js` in
-  the current working directory
+- `<day>` - The day to initialize. Will use the file in the configuration you
+  set for `nameTemplate`
 - `<part>` - The part to run. The day file should export a property called
   `part1` and `part2`.
 - `<input>` - The input to give the function. If `-` is passed, stdin will be
   used as the input. If `+` is passed, and you have a session set, then it will
-  pull the input from adventofcode.com.
-- `--session <session>,--year <year>` - Works the same as `advent init`. A
-  session is required if you don't already have a cached version of the input
-  when using `+` as your input source.
+  pull the input from adventofcode.com, or the cached value once it pulls from
+  adventofcode.com the first time.
+- `--year [year]` - See configuration above
+- `--session [session]` - See configuration above
+- `--name-template [template]` - See configuration above
 
 # Notes
-
-- No requests will be made to adventofcode.com unless you have a session set. A
-  local cache is kept so that you only should have to make one request for input
-  per day.
-
-- The config for `year` and `session` can also be provided in the package.json
-  as config under the `adventConfig` key in your package.json. e.g.:
-
-  ```js
-  {
-    // ...
-    "adventConfig": {
-      "year": "2015",
-      "session": "session={your session id}"
-    }
-  }
-  ```
-
-  For your session, you can also set the `ADVENT_SESSION` environment variable
-  instead.
 
 - This module leverages the [debug](https://www.npmjs.com/package/debug) module.
   Setting `DEBUG=advent` will print out debug information, such as when this
