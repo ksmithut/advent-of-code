@@ -38,7 +38,7 @@ const getInput = (input, config) => {
     debug('Getting raw input from argument')
     inputPromise = Promise.resolve(input)
   }
-  return inputPromise.then(val => val.trim()).then(input => {
+  return inputPromise.then(input => {
     debug('Successfully got input')
     return input
   })
@@ -50,6 +50,13 @@ const run = (rawInput, config) => {
     .then(input => {
       debug(`Getting day module at ${config.dayFilepath}`)
       const dayModule = require(config.dayFilepath)
+      const options = Object.assign(
+        {
+          noTrim: false
+        },
+        dayModule.options
+      )
+      if (!options.noTrim) input = input.trim()
       if (config.part === 1) {
         debug(`Running part 1`)
         time = timing()

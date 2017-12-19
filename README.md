@@ -28,14 +28,13 @@ arguments, they will override your `package.json` configuration.
 }
 ```
 
-| `package.json` key          | CLI argument                     | Default                                                   | Description |
-| --------------------------- | -------------------------------- | --------------------------------------------------------- | ----------- |
-| `adventConfig.year`         | `-y, --year [year]`              | currentMonth === December ? currentYear : currentYear - 1 | When pulling input from adventofcode.com, this year will be used. |
-| -                           | `-s, --session [cookie]`         | `process.env.ADVENT_SESSION`                              | The session cookie to use when making requests to adventofcode.com. You can get this by logging into adventofcode.com and inspecting the request in your devtools and see what your cookie value is. Should start with `session=`. |
-| `adventConfig.nameTemplate` | `-n, --name-template [template]` | `'day{{num}}.js'`                                         | The filename template to use when running and creating new day files. Wherever `{{num}}` is in the string, it will be replaced with a two digit (leading `0`s) representation of the number will be input. So if the day is `1`, using the default template, the filename will be `day01.js`. |
-| `adventConfig.templateFile` | `-t, --template-file [filepath]` | `'node_modules/advent-of-code/src/templates/day.js'`      | The template file to use when initializing a new day file. It is recommended that you have your own that fits your style. The only requirement is that you export 2 functions: `exports.part1` and `exports.part2`, or just `module.exports = { part1, part2 }`. |
-| -                           | `-f, --force`                    | `false`                                                   | A flag used if you want to override an existing file with the template when calling `advent init` |
-
+| `package.json` key          | CLI argument                     | Default                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| --------------------------- | -------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `adventConfig.year`         | `-y, --year [year]`              | currentMonth === December ? currentYear : currentYear - 1 | When pulling input from adventofcode.com, this year will be used.                                                                                                                                                                                                                                                                                                                                                                      |
+| -                           | `-s, --session [cookie]`         | `process.env.ADVENT_SESSION`                              | The session cookie to use when making requests to adventofcode.com. You can get this by logging into adventofcode.com and inspecting the request in your devtools and see what your cookie value is. Should start with `session=`.                                                                                                                                                                                                     |
+| `adventConfig.nameTemplate` | `-n, --name-template [template]` | `'day{{num}}.js'`                                         | The filename template to use when running and creating new day files. Wherever `{{num}}` is in the string, it will be replaced with a two digit (leading `0`s) representation of the number will be input. So if the day is `1`, using the default template, the filename will be `day01.js`.                                                                                                                                          |
+| `adventConfig.templateFile` | `-t, --template-file [filepath]` | `'node_modules/advent-of-code/src/templates/day.js'`      | The template file to use when initializing a new day file. It is recommended that you have your own that fits your style. The only requirement is that you export 2 functions: `exports.part1` and `exports.part2`, or just `module.exports = { part1, part2 }`. You may also export an `options` object to configure how input is parsed. `options.noTrim` lets you choose whether or not the input gets trimmed. Default is `false`. |
+| -                           | `-f, --force`                    | `false`                                                   | A flag used if you want to override an existing file with the template when calling `advent init`                                                                                                                                                                                                                                                                                                                                      |
 
 # Usage
 
@@ -53,12 +52,12 @@ advent init <day>
 
 ### Options
 
-- `<day>` - The day to initialize. Will create a file using your `nameTemplate`
+* `<day>` - The day to initialize. Will create a file using your `nameTemplate`
   configuration. You can run `advent init <day>` again and it won't do anything
   unless you pass the `--force` flag.
-- `--name-template [template]` - See configuration above
-- `--template-file [filepath]` - See configuration above
-- `--force` - See configuration above
+* `--name-template [template]` - See configuration above
+* `--template-file [filepath]` - See configuration above
+* `--force` - See configuration above
 
 ## Run a day's code
 
@@ -68,27 +67,27 @@ $ advent run <day> <part> <input>
 
 ### Options
 
-- `<day>` - The day to initialize. Will use the file in the configuration you
+* `<day>` - The day to initialize. Will use the file in the configuration you
   set for `nameTemplate`
-- `<part>` - The part to run. The day file should export a property called
+* `<part>` - The part to run. The day file should export a property called
   `part1` and `part2`.
-- `<input>` - The input to give the function. If `-` is passed, stdin will be
+* `<input>` - The input to give the function. If `-` is passed, stdin will be
   used as the input. If `+` is passed, and you have a session set, then it will
   pull the input from adventofcode.com, or the cached value once it pulls from
   adventofcode.com the first time.
-- `--year [year]` - See configuration above
-- `--session [session]` - See configuration above
-- `--name-template [template]` - See configuration above
+* `--year [year]` - See configuration above
+* `--session [session]` - See configuration above
+* `--name-template [template]` - See configuration above
 
 # Notes
 
-- This module leverages the [debug](https://www.npmjs.com/package/debug) module.
+* This module leverages the [debug](https://www.npmjs.com/package/debug) module.
   Setting `DEBUG=advent` will print out debug information, such as when this
   module is pulling from local cache, which days it's trying to run/initialize,
   and so forth. When reporting bugs, please have the output from this handy so
   that I can more quickly determine the issue.
 
-- One thing I liked to do with my local stuff was to store my answers locally
+* One thing I liked to do with my local stuff was to store my answers locally
   along with example inputs (from the descriptions). The goal for this project
   was to make it easy for someone to upload their solutions to github, and
   others could pull it down and have it work with their inputs, but if there is

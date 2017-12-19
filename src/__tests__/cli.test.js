@@ -221,4 +221,27 @@ describe('advent cli', () => {
         expect(adventApi.getInput).toHaveBeenCalledTimes(1)
       })
   })
+
+  test('it does not trim when option is set', () => {
+    cache.clear()
+    process.chdir(fixtures('project'))
+    adventApi.__setInput('  myinput  ')
+    const file = `
+      exports.part1 = (input) => input + '--part1foobar'
+      exports.part2 = (input) => input + '--part2foobar'
+      exports.options = { noTrim: true }
+    `
+    return cli(createArgs('init', '1'))
+      .then(() =>
+        fs.writeFileAsync(fixtures('project', 'src', 'day02.js'), file, 'utf8')
+      )
+      .then(() => cli(createArgs('run', '2', '1', '+', '--session', 'foobar')))
+      .then(output => {
+        expect(output).toEqual('  myinput  --part1foobar')
+      })
+      .then(() => cli(createArgs('run', '2', '2', '+', '--session', 'foobar')))
+      .then(output => {
+        expect(output).toEqual('  myinput  --part2foobar')
+      })
+  })
 })
