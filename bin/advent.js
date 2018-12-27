@@ -12,6 +12,5 @@ cli()
   })
   .catch(err => {
     debug('error running advent')
-    debug(err.stack)
-    console.error(err.message)
+    console.error(err.stack)
   })

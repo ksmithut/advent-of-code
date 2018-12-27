@@ -4,8 +4,9 @@
   "description": "A cli to help initialize/run JavaScript advent-of-code challenges.",
   "main": "bin/advent.js",
   "scripts": {
-    "lint": "standard",
-    "test": "jest"
+    "lint": "standard && prettier-eslint '**/*.js' --list-different",
+    "test": "jest",
+    "format": "prettier-eslint '**/*.js' --write"
   },
   "bin": {
     "advent": "./bin/advent.js"
@@ -43,19 +44,20 @@
     }
   },
   "dependencies": {
-    "bluebird": "^3.5.2",
+    "bluebird": "^3.5.3",
     "commander": "^2.19.0",
     "configstore": "^4.0.0",
-    "debug": "^4.1.0",
+    "debug": "^4.1.1",
     "get-stdin": "^6.0.0",
     "mkdirp": "^0.5.1",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.9",
+    "@types/jest": "^23.3.10",
     "jest": "^23.6.0",
-    "nock": "^10.0.1",
+    "nock": "^10.0.5",
+    "prettier-eslint-cli": "^4.7.1",
     "rimraf": "^2.6.2",
     "standard": "^12.0.1"
   }
