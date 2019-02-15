@@ -1,6 +1,6 @@
 {
   "name": "advent-of-code",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "A cli to help initialize/run JavaScript advent-of-code challenges.",
   "main": "bin/advent.js",
   "scripts": {
