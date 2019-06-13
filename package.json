@@ -46,7 +46,7 @@
   "dependencies": {
     "bluebird": "^3.5.5",
     "commander": "^2.20.0",
-    "configstore": "^4.0.0",
+    "configstore": "^5.0.0",
     "debug": "^4.1.1",
     "get-stdin": "^7.0.0",
     "mkdirp": "^0.5.1",
@@ -54,7 +54,7 @@
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
+    "@types/jest": "^24.0.14",
     "jest": "^24.8.0",
     "nock": "^10.0.6",
     "prettier-eslint-cli": "^4.7.1",
