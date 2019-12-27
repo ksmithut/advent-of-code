@@ -44,21 +44,21 @@
     }
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
-    "commander": "^3.0.0",
+    "bluebird": "^3.7.2",
+    "commander": "^4.0.1",
     "configstore": "^5.0.0",
     "debug": "^4.1.1",
     "get-stdin": "^7.0.0",
     "mkdirp": "^0.5.1",
     "request": "^2.88.0",
-    "request-promise": "^4.2.4"
+    "request-promise": "^4.2.5"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^24.0.25",
     "jest": "^24.9.0",
-    "nock": "^10.0.6",
+    "nock": "^11.7.0",
     "prettier-eslint-cli": "^5.0.0",
     "rimraf": "^3.0.0",
-    "standard": "^14.0.2"
+    "standard": "^14.3.1"
   }
 }
