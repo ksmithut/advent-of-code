@@ -11,4 +11,4 @@ const mkdirp = require('mkdirp')
 exports.readFile = Bluebird.promisify(fs.readFile.bind(fs))
 exports.writeFile = Bluebird.promisify(fs.writeFile.bind(fs))
 exports.access = Bluebird.promisify(fs.access.bind(fs))
-exports.mkdirp = Bluebird.promisify(mkdirp)
+exports.mkdirp = mkdirp
